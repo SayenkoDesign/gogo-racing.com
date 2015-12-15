@@ -1,4 +1,19 @@
 <?php
+// race post type
+add_action('init', function () {
+    register_post_type( 'Races',
+        array(
+            'labels' => array(
+                'name' => __( 'Races' ),
+                'singular_name' => __( 'Races' ),
+                'add_new_item' => __('Add New Race'),
+            ),
+            'public' => true,
+            'has_archive' => true,
+        )
+    );
+});
+
 // Widgets
 if(function_exists('register_sidebar')) {
 	register_sidebar(array(
