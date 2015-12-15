@@ -1,0 +1,991 @@
+/*
+Theme Name: GoGo Running
+Theme URI: http://www.sayenkodesign.com/
+Version: 1.0
+Author: Sayenko Design
+Author URI: http://www.sayenkodesign.com/
+*/
+
+
+body {
+margin: 0;
+padding: 0;  
+color: #666;
+text-align:center;
+
+font-size: 100.1%;
+background: #777;
+}
+
+
+#wrapper{
+width: 100%;
+margin: 0px auto;
+padding: 0px;
+text-align:center;
+font-size: 78%;
+line-height:18px;
+}
+
+#headerwrapper
+{
+	background:#efe9de;
+	width:100%;
+	height: 188px;
+	
+}
+
+#header{
+padding: 0  0 0px 0;
+height: 133px;
+margin: 0 auto;
+width: 970px;
+}	
+
+#socialheader {
+padding:12px 0 0 1020px;
+
+}
+
+
+
+#searchtd {
+		width:149px;
+		height:24px;
+		background-image:url('images/searchbg.png');
+		text-align:center;
+		padding: 0px;
+z-index:2;
+}
+
+#searchtd input{
+		margin-top: 3px;
+		margin-left: 3px;
+		width: 125px;
+		height: 13px;
+		font-size: 11px;
+		border: 0px;
+		
+}
+#navwrapper{
+	
+	background: url('images/navbar_03.jpg');
+	width:100%;
+	height: 44px;
+}
+
+
+#nav
+{
+	/*width: 1020px;*/
+	width: 870px;
+	margin: 0 auto;
+	/*padding-top: 10px;*/
+}
+
+#wrapper2{
+	margin: 0 auto;
+	width: 1150px;
+	text-align:left;
+	clear:both;
+}
+
+
+#contentwrapper{
+	margin: 0px auto;
+
+}
+
+.breadcrumb
+{
+	color: #c0100e;	
+}
+.breadcrumb a
+{
+	color: #c0100e;
+}
+.breadcrumb a:hover
+{
+	text-decoration: underline;
+	color: #ef9c2c;
+}
+
+
+.image {
+float: left;
+position: relative;
+width: 99%; /* for IE 6 */
+
+}
+
+.image .text{
+
+position: absolute;
+top: 280px;
+left: 20px;
+
+}
+
+.featured-videos {
+
+width:207px;
+
+}
+
+/** IMAGE ROUND BOX **/
+
+
+.footercallouts
+{
+	text-align:left;
+	
+}
+
+.footercallouts a
+{	
+	color: #c09f5d;
+}
+.footercallouts a:hover
+{
+	color: #996633;
+}
+.footercallouts h2
+{
+	margin-top:0px;
+}
+.footercallouts div.entry
+{
+	margin:0px;
+	padding:0px;
+}
+		
+#content{
+clear:both;
+padding: 0;
+text-align: left;
+}	
+
+
+#main {
+float:right;
+width: 1175px;
+margin: 0;
+padding: 0 0 10px 0px;
+overflow:show;
+}
+
+
+#sidebar {
+padding: 0;
+margin: 0px 0px 0px 540px;
+}
+
+
+#footer {
+clear: both;
+margin: 0;
+padding: 20px 0px 0px 0px;
+text-align: left;
+font-size: 134%;
+color: #be1302;
+}
+#footer a{
+	color:be1302;
+	text-decoration:underline;
+}
+
+
+#footer-inner{
+/*background: #cc9999;*/
+height: 52px;
+}
+
+#footer-inner p{
+margin:30px 0;
+}
+
+
+#navigation{
+padding: 5px 15px;
+
+}
+
+#navigation div.fleft{
+float:left;
+}
+
+#navigation div.fright{ 
+float:right;
+}
+
+#credit{
+text-align:right;
+font-size: 80%;
+}
+
+#credit p{
+	margin: 0px 10px;
+	padding: 30px;
+	}
+#credit p a{
+	color: #777;
+	font-weight:100;
+}
+#credit p a:hover{
+	color: #777;
+}
+
+
+#subscribe{
+text-align:center;
+}
+
+#subscribe p{
+ margin: 5px 0;
+}
+
+/*  ********** default styles *********** */
+
+p, h1, h2, h3, h4, h5, h6{
+margin: 10px 0;
+padding: 0;
+}
+
+h1, h2, h3, h4, h5, h6 {
+
+}
+
+h1{
+	font-size: 350%;
+	color: #cc0000;
+}
+h2{
+	font-size: 160%;
+}
+h3{
+	font-size: 120%;
+}
+h4{
+	font-size: 110%;
+}
+h5{
+	font-size: 100%;
+}
+h6{
+	font-size: 90%;
+}
+
+
+a{
+color:#c0100e;
+font-weight:800;
+text-decoration:none;
+}
+a:hover{
+color:#996633;
+text-decoration:underline;
+}
+
+a img{
+border:0px;
+}
+
+hr{
+height:2px;
+margin:5px 0;
+border-bottom: 1px solid #ccc;
+border-top: 1px solid #ccc;
+}
+
+blockquote{
+background: #EBF7FF;
+padding: 5px 15px;
+margin: 3px 30px;
+border-left: 4px solid #8CD1FD;
+border-top: 1px solid #EBF7FF;
+border-right: 1px solid #EBF7FF;
+border-bottom: 1px solid #EBF7FF;
+
+}
+
+form{
+margin: 0;
+padding:0;
+}
+
+fieldset{
+padding:10px;
+margin:0;
+border:none;
+}
+
+legend{
+font-weight:800;
+}
+
+code{
+	font-size: 380%;
+	white-space: pre;
+}
+
+td{
+ vertical-align:top;
+}
+
+
+
+
+#tabs{
+padding: 0;
+background:black;
+}
+
+#nav ul{
+margin: 0;
+padding:3px 0;
+list-style-type:none;
+
+}
+
+#nav ul li{
+margin: 10px 0 3px 15px;
+padding: 6px 15px 6px 0px;
+display:inline;
+font-size: 12px;
+font-family: Tahoma, Arial, sans-serif;
+}
+
+#nav ul li a{
+color: black;
+}
+
+#nav ul li a:hover{
+color:#e58475;
+ text-decoration:none;
+}
+
+
+/* Headings */ 
+
+#header .join {
+
+margin-left: 45px;
+float: left;
+
+}
+
+form#searchform2{
+display: block;
+margin: -24px 427px;
+}
+
+#header h4{
+margin:  0;
+padding: 15px 134px 0 15px;
+font-weight:800;
+font-size: 140%;
+}
+
+#header h4 a{
+font-weight:100;
+color: white;
+text-decoration: none;
+}
+
+
+
+#header h3{
+margin:  0;
+padding: 15px 17px 0 15px;
+font-weight:800;
+font-size: 200%;
+}
+
+#header h3 a{
+font-weight:100;
+color: white;
+text-decoration: none;
+}
+
+
+#header h2{
+margin: 0;
+letter-spacing:1px;
+font-style:italic;
+padding: 10px 0 5px 17px;
+font-weight:800;
+color: #cc0000;
+font-size: 260%;
+}
+
+#content h2{
+margin: 0;
+letter-spacing:1px;
+padding: 10px 0 5px 0px;
+font-size: 312%;
+align: left; font-family:'Rokkitt',arial,serif
+}
+
+h2#sectiontitle{
+font-size:150%;
+font-weight: 100;
+padding:6px 6px 6px 10px;
+margin:8px 10px 5px 0px;
+color: #444;
+border-top: 1px solid #8CD1FD;
+background:#EBF7FF;
+
+}
+
+/* post styles */
+
+.post{
+margin: 0 0 10px 0;
+}
+
+.entry{
+margin: 0;
+padding: 5px -1px 8px 10px; font-size:14px
+}
+
+.post h2 {
+color:#c0100e;
+font-size: 160%;
+font-weight:100;
+padding: 2px 0 4px 2px;
+margin: 0 0 15px 0;
+}
+
+
+.post h2 a{
+color:#c0100e;
+text-decoration:none;
+font-weight:800;
+}
+
+.post h2 a:hover{
+text-decoration:none;
+color: #ff9933;
+}
+
+.postmetadata{
+font-size:150%;
+/*border-top: 1px solid #8CD1FD;
+background:#EBF7FF;*/
+padding: 1px 0 1px 5px;
+margin: 0 5px;
+float:left; width:100%
+}
+
+.postmetadata p{
+line-height: 15px;
+padding: 0;
+margin: 3px 0;
+}
+
+
+/*  Comments   */
+
+h3#comments, h3#postcomment{
+	font-size: 145%;
+	font-family:verdana, sans-serif; float:left; width:100%
+}	
+
+ol#commentlist{
+padding: 0 0 0 20px;
+font-size: 90%;
+list-style-type:none;
+}
+
+ol#commentlist li{
+	padding: 2px 10px;
+	margin: 0;
+}
+
+ol#commentlist li p.commentheader{
+margin: 3px 0 0px 0;
+padding: 1px 5px;
+}
+
+
+
+ul#commentlist{
+padding: 0 0 15px 0;
+margin:0;
+list-style-type:none; float:left; width:100%
+}
+
+ul#commentlist li{
+	display: block;
+	padding: 0;
+	margin: 10px 0px 0 0;
+	font-size:90%;
+	background:#f4f4f4; float:left; width:100%;
+}
+
+
+ul#commentlist li div.gravatar {
+	width:40px;
+	float:left;
+	text-align: center;
+	padding: 5px 0 0 5px;
+}
+
+ul#commentlist li div.gravatar img{
+border: 2px solid #ddd;
+}
+
+
+ul#commentlist li p.commentauthor {
+	padding: 0;
+	margin: 0 0 2px 0;
+	overflow:hidden;
+}
+
+
+ul#commentlist li p.commentheader{
+margin: 0 0 10px 0;
+padding: 0px; font-size:16px
+}
+
+
+ul#commentlist li div.commenttext{
+padding: 0 0 0 0px;
+margin:5px 0px 5px 0px; float:left; width:100%; font-size:16px
+}
+
+ul#commentlist li div.commenttext div.commentwrapper{
+/*background: #F0F9FF;*/
+margin:0 0 0 5px;
+padding: 3px 8px;
+/*border-top: 1px solid #8CD1FD; */
+}
+
+
+/*  sidebar styles */
+
+
+.menu{
+padding:0;
+font-size:100%;
+}
+
+.menu a{
+font-weight: 100;
+}
+
+.menu a:hover{
+text-decoration:none;
+}
+
+.menu ul{
+margin:0;
+padding:0 0 0 0px;
+list-style-type:none;
+}
+
+.menu ul li.widget{
+padding:2px;
+margin:0 0 7px 0px;
+}
+
+.menu ul li.widget ul{
+	margin: 0;
+	padding:0;
+}
+
+.menu ul li.widget ul li{
+padding: 2px 0 2px 12px;
+margin:0;
+border-bottom: 1px solid #eee;
+}
+
+.menu ul li.widget ul li ul{
+}
+
+.menu ul li.widget ul li ul li{
+border-top: 1px solid #eee;
+border-bottom: none !important;
+padding: 0 0 0 11px;
+}
+
+.menu ul li.widget h3{
+font-size:120%;
+padding:2px 0 3px 5px;
+margin:0;
+color: #222;
+font-weight: 800;
+font-family: arial, verdana, sans-serif;
+font-variant:small-caps;
+border-bottom: 1px solid #8CD1FD;
+border-top: 3px solid #8CD1FD;
+letter-spacing:2px;
+}
+
+.menu ul li h3 a{
+color: #023A5E;
+font-weight: 800;
+}
+.menu ul li h3 a:hover{
+color: #c0100e;
+text-decoration: none;
+}
+
+.menu form{
+display:block;
+margin:0px;
+padding:4px;
+}
+
+.menu input{
+margin:3px 0;
+font-size:90%;
+}
+
+li.widget .textwidget, li.widget #search {
+padding: 2px 5px;
+}
+
+/* Calendar styles */
+#wp-calendar {
+empty-cells: show;
+margin: 10px auto 0;
+width: 155px;
+}
+
+#wp-calendar #next a {
+padding-right: 10px;
+text-align: right;
+}
+
+#wp-calendar #prev a {
+padding-left: 10px;
+text-align: left;
+}
+
+#wp-calendar a {
+display: block;
+}
+
+#wp-calendar caption {
+text-align: center;
+width: 100%;
+}
+
+#wp-calendar td {
+padding: 3px 0;
+text-align: center;
+}
+
+
+#footer a{
+font-weight: 100;
+}
+
+
+.aligncenter,
+div.aligncenter {
+   display: block;
+   margin-left: auto;
+   margin-right: auto;
+}
+
+.alignleft {
+   float: left;
+}
+
+.alignright {
+   float: right;
+}
+
+.wp-caption {
+   border: 1px solid #ddd;
+   text-align: center;
+   background-color: #f3f3f3;
+   padding-top: 4px;
+   margin: 10px;
+   /* optional rounded corners for browsers that support it */
+   -moz-border-radius: 3px;
+   -khtml-border-radius: 3px;
+   -webkit-border-radius: 3px;
+   border-radius: 3px;
+}
+
+.wp-caption img {
+   margin: 0;
+   padding: 0;
+   border: 0 none;
+}
+
+.wp-caption p.wp-caption-text {
+   font-size: 11px;
+   line-height: 17px;
+   padding: 0 4px 5px;
+   margin: 0;
+}
+
+
+/** menu **/
+.menubar {	background: url('images/navbar_03.jpg');width:100%;	height: 42px;	text-align:center; width:100%; }
+
+.menu {z-index:100; margin:0px auto; padding-top:9px; width:850px; text-transform: uppercase; }
+/* hack to correct IE5.5 faulty box model */
+
+/* remove all the bullets, borders and padding from the default list styling */
+.menu ul {margin:0px; padding:0; list-style-type:none;}
+
+.menu ul li{
+display:inline;
+}
+
+.menu ul ul {width:255px;background:#666633;}
+/* float the list to make it horizontal and a relative positon so that you can control the dropdown menu positon */
+.menu li {float:left;position:relative;}
+
+.menu li.separator {
+padding:7px 0px;
+margin:0px;	
+	}
+
+
+/* style the links for the top level */
+.menu a, .menu a:visited {
+display:block; padding: 7px 15px 8px; 
+font-weight: 400;
+color: black;
+font-size: 12px;
+font-family: Verdana, Arial, Helvetica, sans-serif;
+letter-spacing:1px;
+text-decoration:none;
+}
+.menu ul ul li{
+	text-align:left;
+}
+.menu ul ul a, .menu ul ul a:visited {
+font-weight: 400;
+color: black;
+font-size: 10px;
+font-family: Verdana, Arial, Helvetica, sans-serif;
+letter-spacing:1px;
+}
+
+/* style the second level background */
+.menu ul ul a.drop, .menu ul ul a.drop:visited {background:#c0100e;}
+/* style the second level hover */
+.menu ul ul a.drop:hover{background:#c0100e;}
+.menu ul ul :hover > a.drop {background:#c0100e;}
+/* style the third level background */
+.menu ul ul ul a, .menu ul ul ul a:visited {background:#c0100e;}
+/* style the third level hover */
+.menu ul ul ul a:hover {background:#c0100e;}
+
+.menu ul ul li{
+	width: 240px;
+	/*border-right:2px solid #666633;
+	border-left:2px solid #666633;*/
+}
+li.page-item-234{
+	border-bottom:2px solid #666633;
+}
+li.page-item-68{
+	border-top:2px solid #666633;
+}
+/* hide the sub levels and give them a positon absolute so that they take up no room */
+.menu ul ul {visibility:hidden;position:absolute;height:0;top:32px;left:0; width:150px; z-index:2000; background:#666633;}
+/* another hack for IE5.5 */
+* html .menu ul ul {top:30px;t\op:31px;}
+
+/* position the third level flyout menu */
+.menu ul ul ul{left:149px; top:-1px; width:150px;}
+
+/* position the third level flyout menu for a left flyout */
+.menu ul ul ul.left {left:-149px;}
+
+/* style the table so that it takes no ppart in the layout - required for IE to work */
+.menu table {position:absolute; top:0; left:0; border-collapse:collapse;}
+
+/* style the second level links */
+.menu ul ul a, .menu ul ul a:visited {background:#cccc99; color:black; height:auto; padding:0px 10px;}
+/* yet another hack for IE5.5 */
+/* html .menu ul ul a, * html .menu ul ul a:visited {width:150px;w\idth:150px;} */
+
+/* style the top level hover */
+.menu a:hover{color:#fff;background: #c0100e;}
+.menu ul ul a:hover{color:#fff;background: #e58475;}
+.menu :hover > a{color:#fff;background: #c0100e;} 
+
+.menu ul ul :hover > a {color:#fff; background: #e58475;}
+
+/* make the second level visible when hover on first level list OR link */
+.menu ul li:hover ul,
+.menu ul a:hover ul{visibility:visible; }
+/* keep the third level hidden when you hover on first level list OR link */
+.menu ul :hover ul ul{visibility:hidden;}
+/* make the third level visible when you hover over second level list OR link */
+.menu ul :hover ul :hover ul{ visibility:visible;}
+
+.menu ul li.liston a{
+color: #e58475;
+}
+
+.homedesign
+{
+	position: absolute;
+	///margin-top: -414px;
+	///margin-left: 338px;
+	top: -1px;
+	right: -20px;
+	background: url(images/header-nav.png);
+	width:622px;
+	height:62px;
+}
+
+.headersocial
+{
+	position: absolute;
+	
+	top: 50px;
+	right: 206px;
+	background: url(images/facetwit_04.jpg);
+	width:20px;
+	height:18px;
+}
+
+
+
+/* PRODUCT TABLE */
+.producttable td
+{
+	padding: 4px;
+	vertical-align: top;
+}
+.producttable td img
+{
+	border: 2px solid #996633;	
+	width: 88px;
+	height: auto;
+}
+
+
+.producttablenoresize td
+{
+	padding: 4px;
+	vertical-align: top;
+}
+.producttablenoresize td img
+{
+	border: 2px solid #996633;	
+}
+
+.producttablenoresize td img.noborder
+{
+	border: 0px;
+}
+.producttable td img.noborder
+{
+	border: 0px;
+}
+
+.producttable td img.noresize
+{
+width:auto;
+height:auto;
+}
+
+
+/* The Nivo Slider styles */
+.nivoSlider {
+	position:relative;
+}
+.nivoSlider img {
+	position:absolute;
+	top:0px;
+	left:0px;
+}
+/* If an image is wrapped in a link */
+.nivoSlider a.nivo-imageLink {
+	position:absolute;
+	top:0px;
+	left:0px;
+	width:100%;
+	height:100%;
+	border:0;
+	padding:0;
+	margin:0;
+	z-index:6;
+	display:none;
+}
+/* The slices and boxes in the Slider */
+.nivo-slice {
+	display:block;
+	position:absolute;
+	z-index:5;
+	height:100%;
+}
+.nivo-box {
+	display:block;
+	position:absolute;
+	z-index:5;
+}
+/* Caption styles */
+.nivo-caption {
+	position:absolute;
+	left:0px;
+	bottom:0px;
+	background:#cc0000;
+	color:#fff;
+	opacity:0.9; /* Overridden by captionOpacity setting */
+	width:100%;
+	z-index:8;
+}
+.nivo-caption p {
+	padding:15px;
+	margin:0;
+}
+.nivo-caption a {
+	display:inline !important;
+}
+.nivo-html-caption {
+    display:none;
+}
+/* Direction nav styles (e.g. Next & Prev) */
+.nivo-directionNav a {
+	position:absolute;
+	top:45%;
+	z-index:9;
+	cursor:pointer;
+}
+.nivo-prevNav {
+	left:0px;
+}
+.nivo-nextNav {
+	right:0px;
+}
+/* Control nav styles (e.g. 1,2,3...) */
+.nivo-controlNav a {
+	position:relative;
+	z-index:9;
+	cursor:pointer;
+}
+.nivo-controlNav a.active {
+	font-weight:bold;
+}
+.ftrdvdcnt{height:101px;width:542px;float:middle;}
+.ftrdvdcnt img{width:175px; height:101px}
+
+.socialmediacntmn{float:left; width:100%; height:auto; padding:15px 0; font-size:14px; font-family:Verdana, Geneva, sans-serif}
+.postcntmn{float:left; width:100%; height:auto}
+.proplayercnt{float:left; width:500px; height:auto}
+.postlinkcntmn{float:left; width:250px; height:auto; margin:0px 20px}
+.postaddcntmn{float:left; width:350px;  height:auto}
+.pstbtcnt{float:left; width:100%; height:auto; text-align:center; line-height:18px}
+.pstinfomn{float:left; width:100%; height:auto; font-size:20px; line-height:22px;}
+.ttl{color:#C0100E; font-size:22px; display:block; width:100%}
+.cochsblogcnt{float:left; width:100%; height:auto; margin:15px 0 0 0 }
+.cochsblogcnt h1{margin:0px; padding:0px; font-size:35px; color:#C0100E; border:none!important; font-family:'Rokkitt',arial,serif !important}
+.cochsbolgtxt{float:left; width:100%; height:auto; margin:10px 0 0 0; font-family:Verdana, Geneva, sans-serif}
+.cochsbolgtxt h3{margin:0px; padding:0px; font-size:18px; color:#C0100E; font-weight:normal }
+.cochsbolgtxt p{margin:0px; padding:5px 0 0 0; font-size:14px; color:#474747}
+.cochsbolgtxt a{font-size:14px; color:#C0100E; text-decoration:underline}
+.cochsbolgtxt a:hover{font-size:14px; color:#C0100E; text-decoration:none}
+.butt_comment{background: url(images/butt_comment.jpg) no-repeat; font-size:20px; color:#fff; border:none; width:116px; height:38px; font-family:'Rokkitt',arial,serif; margin:0 0 0 473px}
