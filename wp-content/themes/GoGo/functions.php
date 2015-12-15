@@ -1,4 +1,7 @@
 <?php
+// lower seo mta box priority
+add_filter( 'wpseo_metabox_prio', function() { return 'low';});
+
 // race post type
 add_action('init', function () {
     register_post_type( 'Races',
