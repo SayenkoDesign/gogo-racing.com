@@ -14,14 +14,21 @@ add_action('init', function () {
             'public' => true,
             'has_archive' => true,
             'capabilities' => array(
-                'edit_post'          => 'edit_race',
-                'read_post'          => 'read_race',
-                'delete_post'        => 'delete_race',
-                'edit_posts'         => 'edit_races',
-                'edit_others_posts'  => 'edit_others_races',
-                'publish_posts'      => 'publish_races',
-                'read_private_posts' => 'read_private_races',
-                'create_posts'       => 'edit_races',
+                'create_posts'              => 'create_races',
+                'publish_posts'             => 'publish_races',
+                'read'                      => 'read_race',
+                'read_post'                 => 'read_race',
+                'read_private_posts'        => 'read_private_races',
+                'edit_post'                 => 'edit_race',
+                'edit_posts'                => 'edit_races',
+                'edit_private_posts'        => 'edit_private_races',
+                'edit_others_posts'         => 'edit_others_races',
+                'edit_published_posts'      => 'edit_published_races',
+                'delete_post'               => 'delete_race',
+                'delete_posts'              => 'delete_races',
+                'delete_private_posts'      => 'delete_private_races',
+                'delete_others_posts'       => 'delete_others_races',
+                'delete_published_posts'    => 'delete_published_races',
             ),
         )
     );
@@ -30,24 +37,39 @@ add_action('init', function () {
 // give admin access to new capabilities
 add_action('admin_init', function() {
     $role = get_role('administrator');
-    $role->add_cap('edit_race');
-    $role->add_cap('read_race');
-    $role->add_cap('delete_race');
-    $role->add_cap('edit_races');
-    $role->add_cap('edit_others_races');
+    $role->add_cap('create_races');
     $role->add_cap('publish_races');
+    $role->add_cap('read_race');
+    $role->add_cap('read_race');
     $role->add_cap('read_private_races');
+    $role->add_cap('edit_race');
     $role->add_cap('edit_races');
+    $role->add_cap('edit_private_races');
+    $role->add_cap('edit_others_races');
+    $role->add_cap('edit_published_races');
+    $role->add_cap('delete_race');
+    $role->add_cap('delete_races');
+    $role->add_cap('delete_private_races');
+    $role->add_cap('delete_others_races');
+    $role->add_cap('delete_published_races');
 
     $role = get_role('author');
-    $role->add_cap('edit_race');
-    $role->add_cap('read_race');
-    $role->add_cap('delete_race');
-    $role->add_cap('edit_races');
-    $role->add_cap('edit_others_races');
+    $role->add_cap('read');
+    $role->add_cap('create_races');
     $role->add_cap('publish_races');
+    $role->add_cap('read_race');
+    $role->add_cap('read_race');
     $role->add_cap('read_private_races');
+    $role->add_cap('edit_race');
     $role->add_cap('edit_races');
+    $role->add_cap('edit_private_races');
+    $role->add_cap('edit_others_races');
+    $role->add_cap('edit_published_races');
+    $role->add_cap('delete_race');
+    $role->add_cap('delete_races');
+    $role->add_cap('delete_private_races');
+    $role->add_cap('delete_others_races');
+    $role->add_cap('delete_published_races');
 });
 
 // Widgets
