@@ -45,7 +45,7 @@ add_action('admin_init', function() {
     $role->add_cap('create_races');
     $role->add_cap('publish_races');
     $role->add_cap('read_race');
-    $role->add_cap('read_race');
+    $role->add_cap('read_races');
     $role->add_cap('read_private_races');
     $role->add_cap('edit_race');
     $role->add_cap('edit_races');
@@ -59,22 +59,27 @@ add_action('admin_init', function() {
     $role->add_cap('delete_published_races');
 
     $role = get_role('author');
-    $role->add_cap('read');
     $role->add_cap('create_races');
     $role->add_cap('publish_races');
     $role->add_cap('read_race');
-    $role->add_cap('read_race');
-    $role->add_cap('read_private_races');
+    $role->add_cap('read_races');
+    //$role->add_cap('read_private_races');
     $role->add_cap('edit_race');
     $role->add_cap('edit_races');
-    $role->add_cap('edit_private_races');
-    $role->add_cap('edit_others_races');
-    $role->add_cap('edit_published_races');
+    //$role->add_cap('edit_private_races');
+    //$role->add_cap('edit_others_races');
+    //$role->add_cap('edit_published_races');
     $role->add_cap('delete_race');
     $role->add_cap('delete_races');
-    $role->add_cap('delete_private_races');
-    $role->add_cap('delete_others_races');
-    $role->add_cap('delete_published_races');
+    //$role->add_cap('delete_private_races');
+    //$role->add_cap('delete_others_races');
+    //$role->add_cap('delete_published_races');
+
+    $role->add_cap('read');
+    $role->add_cap('read_private_pages');
+    $role->add_cap('read_private_posts');
+    $role->add_cap('metaslider_capability');
+    $role->add_cap('upload_files');
 });
 
 // Widgets
