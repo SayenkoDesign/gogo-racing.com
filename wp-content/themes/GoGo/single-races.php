@@ -55,8 +55,10 @@ HTML;
                             </a>
 HTML;
                         }
+
+                        /** meta slider */
                         if($metaslider_id = get_field('meta_slider_id')) {
-                            do_shortcode("[metaslider id=$metaslider_id]");
+                            echo do_shortcode("[metaslider id=$metaslider_id]");
                         }
 
                         /** top content */
