@@ -2,7 +2,7 @@
 <div id="sidebar">
     <div class="menu">
         <?php if(get_post_type() == 'races' && $side_bar = get_field('side_bar_content')) : ?>
-            <?php $side_bar; ?>
+            <?php echo $side_bar; ?>
         <?php else : ?>
             <ul>
                 <?php if (!function_exists('dynamic_sidebar') or !dynamic_sidebar(1)) : ?>
