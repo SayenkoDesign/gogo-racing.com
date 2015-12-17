@@ -13,6 +13,11 @@ add_action('init', function () {
             ),
             'public' => true,
             'has_archive' => true,
+            'supports' => array(
+                'title',
+                'author',
+                'custom-fields'
+            ),
             'capabilities' => array(
                 'create_posts'              => 'create_races',
                 'publish_posts'             => 'publish_races',
