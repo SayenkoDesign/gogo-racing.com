@@ -1727,7 +1727,7 @@ hr {
     font-family: "FontAwesome";
     font-weight: normal;
     font-style: normal;
-    padding-right: 8px;
+    padding-right: 16px;
 }
 .go-accordion-title.open::before {
     content: "\f068";
@@ -1739,7 +1739,7 @@ hr {
     cursor: pointer;
 }
 .go-accordion-content {
-    margin-left: 24px;
+    margin-left: 32px;
     line-height: 18pt;
     color: #4d4b4b;
     margin-bottom: 10px;
