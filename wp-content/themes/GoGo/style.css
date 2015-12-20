@@ -1717,3 +1717,30 @@ hr {
 .indent-six {
     margin-left: 12em !important;
 }
+
+/** new accordion **/
+.go-accordion-title::before {
+    content: "\f067";
+    line-height: 21px;
+    text-align: center;
+    font-size: 14px;
+    font-family: "FontAwesome";
+    font-weight: normal;
+    font-style: normal;
+    padding-right: 8px;
+}
+.go-accordion-title.open::before {
+    content: "\f068";
+}
+.go-accordion-title {
+    color: #373737;
+    font-size: 16px;
+    font-weight: bold;
+    cursor: pointer;
+}
+.go-accordion-content {
+    margin-left: 24px;
+    line-height: 18pt;
+    color: #4d4b4b;
+    margin-bottom: 10px;
+}

@@ -82,6 +82,23 @@ add_action('admin_init', function() {
     $role->add_cap('upload_files');
 });
 
+// Accordion
+add_shortcode('go_accordion', function($atts, $content = null){
+    $icon = '<span class="go-accordion-icon"></span>';
+    $content = str_replace('[go_accordion_header]', '<div class="go-accordion-title">' . $icon, $content);
+    $content = str_replace('[/go_accordion_header]', '</div>', $content);
+    $content = str_replace('[go_accordion_content]', '<div class="go-accordion-content">', $content);
+    $content = str_replace('[/go_accordion_content]', '</div>', $content);
+    return <<<HTML
+    <div class="go-accordion">$content</div>
+HTML;
+});
+
+add_action('wp_enqueue_scripts', function(){
+    wp_enqueue_script('script-name', get_template_directory_uri() . '/scripts/go-accordion.js', array('jquery'));
+});
+
+
 // Widgets
 if(function_exists('register_sidebar')) {
 	register_sidebar(array(
