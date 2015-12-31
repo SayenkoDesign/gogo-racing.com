@@ -4,7 +4,7 @@
  *
  * Class Ads Easy Widget
  *
- * @ Ads Easy
+ * @ Custom Login Page
  *
  * building the actual widget
  *

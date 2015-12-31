@@ -2,16 +2,16 @@
 /*
 Plugin Name: A5 Custom Login Page
 Description: Just customize your login page (or that of your community etc.) by giving the WP login page a different look, with your own logo and special colours and styles.
-Version: 2.6.3
-Author: Waldemar Stoffel
-Author URI: http://www.waldemarstoffel.com
+Version: 2.7
+Author: Stefan Crämer
+Author URI: http://www.stefan-craemer.com
 Plugin URI: http://wasistlos.waldemarstoffel.com/plugins-fur-wordpress/a5-custom-login-page
 License: GPL3
 Text Domain: custom-login-page
 Domain Path: /languages
 */
 
-/*  Copyright 2011 - 2015 Waldemar Stoffel  (email: stoffel@atelier-fuenf.de)
+/*  Copyright 2011 - 2015 Stefan Crämer (email: support@atelier-fuenf.de)
 
     This program is free software: you can redistribute it and/or modify
     it under the terms of the GNU General Public License as published by
@@ -57,11 +57,13 @@ if (!class_exists('A5_FormField')) require_once CLP_PATH.'class-lib/A5_FormField
 if (!class_exists('A5_OptionPage')) require_once CLP_PATH.'class-lib/A5_OptionPageClass.php';
 if (!class_exists('A5_DynamicFiles')) require_once CLP_PATH.'class-lib/A5_DynamicFileClass.php';
 if (!class_exists('A5_Widget')) require_once CLP_PATH.'class-lib/A5_WidgetClass.php';
+if (!class_exists('A5_AddMceButton')) require_once CLP_PATH.'class-lib/A5_MCEButtonClass.php';
 
 # loading plugin specific classes
 if (!class_exists('CLP_Admin')) require_once CLP_PATH.'class-lib/CLP_AdminClass.php';
 if (!class_exists('CLP_WidgetAdmin')) require_once CLP_PATH.'class-lib/CLP_AdminClassWidget.php';
-#if (!class_exists('CLP_ShortcodeAdmin')) require_once CLP_PATH.'class-lib/CLP_AdminClassShortcode.php';
+if (!class_exists('CLP_ShortcodeAdmin')) require_once CLP_PATH.'class-lib/CLP_AdminClassShortcode.php';
+if (!class_exists('CLP_Shortcode')) require_once CLP_PATH.'class-lib/CLP_ShortcodeClass.php';
 if (!class_exists('CLP_DynamicCSS')) require_once CLP_PATH.'class-lib/CLP_DynamicCSSClass.php';
 if (!class_exists('CLP_DynamicJS')) require_once CLP_PATH.'class-lib/CLP_DynamicJSClass.php';
 if (!class_exists('Custom_Login_Widget')) require_once CLP_PATH.'class-lib/CLP_WidgetClass.php';
@@ -70,7 +72,7 @@ class A5_CustomLoginPage {
 	
 	private static $options;
 	
-	const version = 2.5;
+	const version = 2.6;
 	
 	function __construct(){
 		
@@ -129,6 +131,8 @@ class A5_CustomLoginPage {
 		if (!empty(self::$options['title'])) add_filter('login_headertitle', array($this, 'change_headertitle'));
 		if (!empty(self::$options['error_custom_message'])) add_filter('login_errors', array($this, 'custom_error'));
 		if (!empty(self::$options['logout_custom_message'])) add_filter('login_messages', array($this, 'custom_logout'));
+		if (!empty(self::$options['password_custom_message'])) add_filter('gettext', array($this, 'custom_password'));
+		if (!empty(self::$options['register_custom_message'])) add_filter('gettext', array($this, 'custom_register'));
 		if (!empty(self::$options['custom_redirect'])) add_filter('login_redirect', array($this, 'login_redirect'), 10, 3);
 		if (!empty(self::$options['hide_backend'])) :
 			add_action('show_admin_bar', array($this, 'disable_admin_bar'));
@@ -144,7 +148,6 @@ class A5_CustomLoginPage {
 		if (!empty(self::$options['disable_pass']))	add_filter('gettext', array($this, 'remove_lostpassword_text'));
 		if (isset(self::$options['video']) && !empty(self::$options['video'])) add_filter('login_message', array($this, 'print_video'));
 		
-		#add_action( 'add_meta_boxes', array($this, 'clp_add_meta_box'));
 		add_action('wp_ajax_video_preview', array($this, 'ajax_video_preview'));
 
 		/**
@@ -162,7 +165,11 @@ class A5_CustomLoginPage {
 		$CLP_DynamicCSS = new CLP_DynamicCSS(self::$options['multisite']);
 		$CLP_Admin = new CLP_Admin(self::$options['multisite']);
 		$CLP_WidgetAdmin = new CLP_WidgetAdmin(self::$options['multisite']);
-		#$CLP_ShortcodeAdmin = new CLP_ShortcodeAdmin(self::$options['multisite']);
+		$CLP_ShortcodeAdmin = new CLP_ShortcodeAdmin(self::$options['multisite']);
+		$CLP_Shortcode = new CLP_Shortcode(self::$options['multisite']);
+		
+		$tinymce_button = new A5_AddMceButton ('custom-login-page', 'CustomLoginPage', 'mce_buttons_2');
+		
 		if (!is_multisite()) $CLP_DynamicJS = new CLP_DynamicJS();
 		
 	}
@@ -282,6 +289,40 @@ class A5_CustomLoginPage {
 	function custom_logout() {
 	
 		return self::$options['logout_custom_message'];
+		
+	}
+	
+	/**
+	 *
+	 * Changes the Lost Password Message
+	 *
+	 */
+	function custom_password($text) {
+		
+		remove_filter('gettext', array($this, 'custom_password'));
+		
+		if ($text == __('Please enter your username or email address. You will receive a link to create a new password via email.')) $text = self::$options['password_custom_message'];;
+		
+		add_filter('gettext', array($this, 'custom_password'));
+		
+		return $text;
+		
+	}
+	
+	/**
+	 *
+	 * Changes the Registration Message
+	 *
+	 */
+	function custom_register($text) {
+		
+		remove_filter('gettext', array($this, 'custom_register'));
+		
+		if ($text == __('Register For This Site')) $text = self::$options['register_custom_message'];;
+		
+		add_filter('gettext', array($this, 'custom_register'));
+		
+		return $text;
 		
 	}
 	
@@ -438,11 +479,13 @@ class A5_CustomLoginPage {
 		
 			add_site_option('clp_options', $default);
 			add_site_option('clp_widget_options');
+			add_site_option('clp_shortcode_options');
 			
 		else:
 		
 			add_option('clp_options', $default);
 			add_option('clp_widget_options');
+			add_option('clp_shortcode_options');
 			
 		endif;
 		
@@ -470,11 +513,13 @@ class A5_CustomLoginPage {
 		
 			delete_site_option('clp_options');
 			delete_site_option('clp_widget_options');
+			delete_site_option('clp_shortcode_options');
 			
 		else:
 		
 			delete_option('clp_options');
 			delete_option('clp_widget_options');
+			delete_option('clp_shortcode_options');
 			
 		endif;
 		
@@ -546,25 +591,6 @@ class A5_CustomLoginPage {
 			exit;
 		
 		endif;
-		
-	}
-	
-	/**
-	 * Adds a box to the main column on the Post and Page edit screens.
-	 */
-	function clp_add_meta_box() {
-		
-		#add_meta_box( 'add-custom-links', __( 'Links' ), 'wp_nav_menu_item_link_meta_box', 'nav-menus', 'side', 'default' );
-	
-		#add_meta_box('add-clp-logout-link', __('Logout Link', 'custom-login-page'), array($this, 'print_meta_box'), 'nav-menus', 'side', 'default');
-	
-	}
-	
-	function print_meta_box() {
-		
-		global $wp_meta_boxes;
-	
-		echo'<pre>';var_dump($wp_meta_boxes);echo'</pre>';
 		
 	}
 	

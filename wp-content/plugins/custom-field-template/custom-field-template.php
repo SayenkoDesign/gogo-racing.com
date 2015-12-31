@@ -5,7 +5,7 @@ Plugin URI: http://wpgogo.com/development/custom-field-template.html
 Description: This plugin adds the default custom fields on the Write Post/Page.
 Author: Hiroaki Miyashita
 Author URI: http://wpgogo.com/
-Version: 2.3.4
+Version: 2.3.5
 Text Domain: custom-field-template
 Domain Path: /
 */
@@ -41,6 +41,7 @@ class custom_field_template {
 		add_action( 'admin_print_scripts', array(&$this, 'custom_field_template_admin_scripts') );
 		add_action( 'admin_head', array(&$this, 'custom_field_template_admin_head'), 100 );
 		add_action( 'dbx_post_sidebar', array(&$this, 'custom_field_template_dbx_post_sidebar') );
+		add_action( 'add_meta_boxes', array(&$this, 'custom_field_template_add_meta_boxes') );
 		
 		//add_action( 'edit_post', array(&$this, 'edit_meta_value'), 100 );
 		add_action( 'save_post', array(&$this, 'edit_meta_value'), 100, 2 );
@@ -153,76 +154,75 @@ class custom_field_template {
 			add_action( 'simple_edit_form', array(&$this, 'insert_custom_field'), 1 );
 			add_action( 'edit_form_advanced', array(&$this, 'insert_custom_field'), 1 );
 			add_action( 'edit_page_form', array(&$this, 'insert_custom_field'), 1 );
-		} else {
-			if ( substr($wp_version, 0, 3) >= '3.3' && file_exists(ABSPATH . 'wp-admin/includes/screen.php') ) :
-				require_once(ABSPATH . 'wp-admin/includes/screen.php');
-			endif;
-			require_once(ABSPATH . 'wp-admin/includes/template.php');
-
-			if ( function_exists('remove_meta_box') && !empty($options['custom_field_template_disable_default_custom_fields']) ) :
-				remove_meta_box('postcustom', 'post', 'normal');
-				remove_meta_box('postcustom', 'page', 'normal');
-				remove_meta_box('pagecustomdiv', 'page', 'normal');
-			endif;
-
-			if ( !empty($options['custom_field_template_deploy_box']) ) :
-				if ( !empty($options['custom_fields']) ) :
-					$i = 0;
-					foreach ( $options['custom_fields'] as $key => $val ) :
-						if ( empty($options['custom_field_template_replace_the_title']) ) $title = __('Custom Field Template', 'custom-field-template');
-						else $title = $options['custom_fields'][$key]['title'];
-						if ( empty($options['custom_fields'][$key]['custom_post_type']) ) :
-							if ( empty($options['custom_fields'][$key]['post_type']) ) :
-								add_meta_box('cftdiv'.$i, $title, array(&$this, 'insert_custom_field'), 'post', 'normal', 'core', $key);
-								add_meta_box('cftdiv'.$i, $title, array(&$this, 'insert_custom_field'), 'page', 'normal', 'core', $key);
-							elseif ( $options['custom_fields'][$key]['post_type']=='post' ) :
-								add_meta_box('cftdiv'.$i, $title, array(&$this, 'insert_custom_field'), 'post', 'normal', 'core', $key);
-							elseif ( $options['custom_fields'][$key]['post_type']=='page' ) :
-								add_meta_box('cftdiv'.$i, $title, array(&$this, 'insert_custom_field'), 'page', 'normal', 'core', $key);
-							endif;
-						else :
-							$tmp_custom_post_type = explode(',', $options['custom_fields'][$key]['custom_post_type']);
-							$tmp_custom_post_type = array_filter( $tmp_custom_post_type );
-							$tmp_custom_post_type = array_unique(array_filter(array_map('trim', $tmp_custom_post_type)));
-							foreach ( $tmp_custom_post_type as $type ) :
-								add_meta_box('cftdiv'.$i, $title, array(&$this, 'insert_custom_field'), $type, 'normal', 'core', $key);
-							endforeach;
-						endif;
-						$i++;
-					endforeach;
-				endif;
-			else :
-				add_meta_box('cftdiv', __('Custom Field Template', 'custom-field-template'), array(&$this, 'insert_custom_field'), 'post', 'normal', 'core');
-				add_meta_box('cftdiv', __('Custom Field Template', 'custom-field-template'), array(&$this, 'insert_custom_field'), 'page', 'normal', 'core');
-			endif;
-						
-			if ( empty($options['custom_field_template_deploy_box']) && is_array($options['custom_fields']) ) :
-				$custom_post_type = array();
-				foreach($options['custom_fields'] as $key => $val ) :
-					if ( isset($options['custom_fields'][$key]['custom_post_type']) ) :
-						$tmp_custom_post_type = explode(',', $options['custom_fields'][$key]['custom_post_type']);
-						$tmp_custom_post_type = array_filter( $tmp_custom_post_type );
-						$tmp_custom_post_type = array_unique(array_filter(array_map('trim', $tmp_custom_post_type)));
-						$custom_post_type = array_merge($custom_post_type, $tmp_custom_post_type);
-					endif;
-				endforeach;
-				if ( isset($custom_post_type) && is_array($custom_post_type) ) :
-					foreach( $custom_post_type as $val ) :
-						if ( function_exists('remove_meta_box') && !empty($options['custom_field_template_disable_default_custom_fields']) ) :
-							remove_meta_box('postcustom', $val, 'normal');
-						endif;
-						add_meta_box('cftdiv', __('Custom Field Template', 'custom-field-template'), array(&$this, 'insert_custom_field'), $val, 'normal', 'core');
-						if ( empty($options['custom_field_template_disable_custom_field_column']) ) :
-							add_filter( 'manage_'.$val.'_posts_columns', array(&$this, 'add_manage_pages_columns') );
-						endif;
-					endforeach;
-				endif;
-			endif;
 		}
 
 		if( strstr($_SERVER['REQUEST_URI'], 'wp-admin/post-new.php') || strstr($_SERVER['REQUEST_URI'], 'wp-admin/post.php') || strstr($_SERVER['REQUEST_URI'], 'wp-admin/page-new.php') || strstr($_SERVER['REQUEST_URI'], 'wp-admin/page.php') ) :
 			add_action('admin_head', array(&$this, 'custom_field_template_admin_head_buffer') );   
 			add_action('admin_footer', array(&$this, 'custom_field_template_admin_footer_buffer') );  
+		endif;
+	}
+	
+	function custom_field_template_add_meta_boxes() {
+		$options = $this->get_custom_field_template_data();
+
+		if ( function_exists('remove_meta_box') && !empty($options['custom_field_template_disable_default_custom_fields']) ) :
+			remove_meta_box('postcustom', 'post', 'normal');
+			remove_meta_box('postcustom', 'page', 'normal');
+			remove_meta_box('pagecustomdiv', 'page', 'normal');
+		endif;
+
+		if ( !empty($options['custom_field_template_deploy_box']) ) :
+			if ( !empty($options['custom_fields']) ) :
+				$i = 0;
+				foreach ( $options['custom_fields'] as $key => $val ) :
+					if ( empty($options['custom_field_template_replace_the_title']) ) $title = __('Custom Field Template', 'custom-field-template');
+					else $title = $options['custom_fields'][$key]['title'];
+					if ( empty($options['custom_fields'][$key]['custom_post_type']) ) :
+						if ( empty($options['custom_fields'][$key]['post_type']) ) :
+							add_meta_box('cftdiv'.$i, $title, array(&$this, 'insert_custom_field'), 'post', 'normal', 'core', $key);
+							add_meta_box('cftdiv'.$i, $title, array(&$this, 'insert_custom_field'), 'page', 'normal', 'core', $key);
+						elseif ( $options['custom_fields'][$key]['post_type']=='post' ) :
+							add_meta_box('cftdiv'.$i, $title, array(&$this, 'insert_custom_field'), 'post', 'normal', 'core', $key);
+						elseif ( $options['custom_fields'][$key]['post_type']=='page' ) :
+							add_meta_box('cftdiv'.$i, $title, array(&$this, 'insert_custom_field'), 'page', 'normal', 'core', $key);
+						endif;
+					else :
+						$tmp_custom_post_type = explode(',', $options['custom_fields'][$key]['custom_post_type']);
+						$tmp_custom_post_type = array_filter( $tmp_custom_post_type );
+						$tmp_custom_post_type = array_unique(array_filter(array_map('trim', $tmp_custom_post_type)));
+						foreach ( $tmp_custom_post_type as $type ) :
+							add_meta_box('cftdiv'.$i, $title, array(&$this, 'insert_custom_field'), $type, 'normal', 'core', $key);
+						endforeach;
+					endif;
+					$i++;
+				endforeach;
+			endif;
+		else :
+			add_meta_box('cftdiv', __('Custom Field Template', 'custom-field-template'), array(&$this, 'insert_custom_field'), 'post', 'normal', 'core');
+			add_meta_box('cftdiv', __('Custom Field Template', 'custom-field-template'), array(&$this, 'insert_custom_field'), 'page', 'normal', 'core');
+		endif;
+						
+		if ( empty($options['custom_field_template_deploy_box']) && is_array($options['custom_fields']) ) :
+			$custom_post_type = array();
+			foreach($options['custom_fields'] as $key => $val ) :
+				if ( isset($options['custom_fields'][$key]['custom_post_type']) ) :
+					$tmp_custom_post_type = explode(',', $options['custom_fields'][$key]['custom_post_type']);
+					$tmp_custom_post_type = array_filter( $tmp_custom_post_type );
+					$tmp_custom_post_type = array_unique(array_filter(array_map('trim', $tmp_custom_post_type)));
+					$custom_post_type = array_merge($custom_post_type, $tmp_custom_post_type);
+				endif;
+			endforeach;
+			if ( isset($custom_post_type) && is_array($custom_post_type) ) :
+				foreach( $custom_post_type as $val ) :
+					if ( function_exists('remove_meta_box') && !empty($options['custom_field_template_disable_default_custom_fields']) ) :
+						remove_meta_box('postcustom', $val, 'normal');
+					endif;
+					add_meta_box('cftdiv', __('Custom Field Template', 'custom-field-template'), array(&$this, 'insert_custom_field'), $val, 'normal', 'core');
+					if ( empty($options['custom_field_template_disable_custom_field_column']) ) :
+						add_filter( 'manage_'.$val.'_posts_columns', array(&$this, 'add_manage_pages_columns') );
+					endif;
+				endforeach;
+			endif;
 		endif;
 	}
 	
@@ -1109,6 +1109,7 @@ type = file';
 			$plugin_dir = dirname( plugin_basename(__FILE__) );
 ?>
 <style type="text/css">
+#poststuff h3								{ font-size: 14px; line-height: 1.4; margin: 0; padding: 8px 12px; }
 div.grippie {
 background:#EEEEEE url(<?php echo '../' . PLUGINDIR . '/' . $plugin_dir . '/js/'; ?>grippie.png) no-repeat scroll center 2px;
 border-color:#DDDDDD;

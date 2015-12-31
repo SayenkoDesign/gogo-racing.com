@@ -5,7 +5,7 @@ Donate link: https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_i
 Tags: custom login, brand login, customize, brand, login, login page, own look, multisite, foolproof, login redirect, login widget, own css, additional html, inject css 
 Requires at least: 3.9
 Tested up to: 4.4
-Stable tag: 2.6.3
+Stable tag: 2.7
 
 Style your login page differently.
 
@@ -14,6 +14,8 @@ Style your login page differently.
 If you are working for a customer or you just want to set a page for a community (band, choir etc.) they might appreciate their own logo at the login screen. With this plugin, you can even go further and style your whole login page according to your needs. At the moment, there is only the way for 'dummies' to style the page, but in a future version you will be able to enter some css code yourself and the final goal is, also to offer the possibility to copy an entire stylesheet into the plugin, to have the most freedom of styling and changing the items on your loginscreen. Since version 1.7 the A5 Custom Login Page is also for a WP networksetup.
 
 Fromon Version 2.2, you can redirect different user roles to different pages after login. There is now also a custom login widget that you can style according to your needs and display it on your blog. Or only in the categories or posts. The widget is very flexible and you can show it on your whole site or only on post pages or only the frontpage etc.
+
+Fromon Version 2.7 there's a shortcode [a5-login-form], to get your login form wherever you want.
 
 == Installation ==
 
@@ -29,6 +31,10 @@ The CSS style sheet is a virtual one and the plugin adds a rewrite rule to refer
 
 In the case your login screen is not changing after saving the settings, go to the debug section of the settings page and choose inline display of the styles. That should make your own design available.
 
+= How do I place the login form to a page? =
+
+Simply type `[a5-login-form]`, where ever you want the form to appear. You can style the login form and it's wrapping container in the short code settings section.
+
 == Screenshots ==
 
 1. The options page of the plugin
@@ -37,6 +43,14 @@ In the case your login screen is not changing after saving the settings, go to t
 4. Not the most pretty, but a possibility
 
 == Changelog ==
+
+= 2.7 =
+
+* Put a login form to whatever page or post with the shortcode.
+
+= 2.6.4 =
+
+* Possibility to enter custom messages for the lost password and the registration page
 
 = 2.6.3 =
 
@@ -355,3 +369,11 @@ Hopefully bugfix for missing stylesheet
 = 2.6.3 =
 
 Bugfix for latest patch
+
+= 2.6.4 =
+
+Possibility to enter custom messages for the lost password and the registration page
+
+= 2.7 =
+
+Put a login form to whatever post or page with shortcode

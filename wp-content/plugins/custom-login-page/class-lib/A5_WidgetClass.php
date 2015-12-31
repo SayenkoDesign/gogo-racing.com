@@ -5,7 +5,7 @@
  * Class A5 Widget
  *
  * @ A5 Plugin Framework
- * Version: 1.0 beta 20150828
+ * Version: 1.0 beta 20150909
  *
  * Some standard functions for widgets
  *
@@ -34,26 +34,26 @@ class A5_Widget extends WP_Widget {
 		$base_name = 'widget-'.$this->id_base.'['.$this->number.']';
 		
 		$pages = array (
-			array($base_id.'homepage', $base_name.'[homepage]', $homepage, __('Homepage', 'a5-recent-posts')),
-			array($base_id.'frontpage', $base_name.'[frontpage]', $frontpage, __('Frontpage (e.g. a static page as homepage)', 'a5-recent-posts')),
-			array($base_id.'page', $base_name.'[page]', $page, __('&#34;Page&#34; pages', 'a5-recent-posts')),
-			array($base_id.'category', $base_name.'[category]', $category, __('Category pages', 'a5-recent-posts')),
-			array($base_id.'single', $base_name.'[single]', $single, __('Single post pages', 'a5-recent-posts')),
-			array($base_id.'date', $base_name.'[date]', $date, __('Archive pages', 'a5-recent-posts')),
-			array($base_id.'archive', $base_name.'[archive]', $date, __('Post type archives', 'a5-recent-posts')),
-			array($base_id.'tag', $base_name.'[tag]', $tag, __('Tag pages', 'a5-recent-posts')),
-			array($base_id.'attachment', $base_name.'[attachment]', $attachment, __('Attachments', 'a5-recent-posts')),
-			array($base_id.'taxonomy', $base_name.'[taxonomy]', $taxonomy, __('Custom Taxonomy pages (only available, if having a plugin)', 'a5-recent-posts')),
-			array($base_id.'author', $base_name.'[author]', $author, __('Author pages', 'a5-recent-posts')),
-			array($base_id.'search', $base_name.'[search]', $search, __('Search Results', 'a5-recent-posts')),
-			array($base_id.'not_found', $base_name.'[not_found]', $not_found, __('&#34;Not Found&#34;', 'a5-recent-posts'))
+			array($base_id.'homepage', $base_name.'[homepage]', $homepage, __('Homepage', 'custom-login-page')),
+			array($base_id.'frontpage', $base_name.'[frontpage]', $frontpage, __('Frontpage (e.g. a static page as homepage)', 'custom-login-page')),
+			array($base_id.'page', $base_name.'[page]', $page, __('&#34;Page&#34; pages', 'custom-login-page')),
+			array($base_id.'category', $base_name.'[category]', $category, __('Category pages', 'custom-login-page')),
+			array($base_id.'single', $base_name.'[single]', $single, __('Single post pages', 'custom-login-page')),
+			array($base_id.'date', $base_name.'[date]', $date, __('Archive pages', 'custom-login-page')),
+			array($base_id.'archive', $base_name.'[archive]', $date, __('Post type archives', 'custom-login-page')),
+			array($base_id.'tag', $base_name.'[tag]', $tag, __('Tag pages', 'custom-login-page')),
+			array($base_id.'attachment', $base_name.'[attachment]', $attachment, __('Attachments', 'custom-login-page')),
+			array($base_id.'taxonomy', $base_name.'[taxonomy]', $taxonomy, __('Custom Taxonomy pages (only available, if having a plugin)', 'custom-login-page')),
+			array($base_id.'author', $base_name.'[author]', $author, __('Author pages', 'custom-login-page')),
+			array($base_id.'search', $base_name.'[search]', $search, __('Search Results', 'custom-login-page')),
+			array($base_id.'not_found', $base_name.'[not_found]', $not_found, __('&#34;Not Found&#34;', 'custom-login-page'))
 		);
 		
-		if (true === $solp) $pages[] = array($base_id.'login_page', $base_name.'[login_page]', $login_page, __('Login Page (only available, if having a plugin)', 'a5-recent-posts')); 
+		if (true === $solp) $pages[] = array($base_id.'login_page', $base_name.'[login_page]', $login_page, __('Login Page (only available, if having a plugin)', 'custom-login-page')); 
 		
-		$checkall = array($base_id.'checkall', $base_name.'[checkall]', __('Check all', 'a5-recent-posts'));
+		$checkall = array($base_id.'checkall', $base_name.'[checkall]', __('Check all', 'custom-login-page'));
 		
-		a5_checkgroup(false, false, $pages, __('Check, where you want to show the widget. By default, it is showing on the homepage and the category pages:', 'a5-recent-posts'), $checkall);
+		a5_checkgroup(false, false, $pages, __('Check, where you want to show the widget. By default, it is showing on the homepage and the category pages:', 'custom-login-page'), $checkall);
 		
 	}
 	
@@ -89,9 +89,9 @@ class A5_Widget extends WP_Widget {
 		$base_id = 'widget-'.$this->id_base.'-'.$this->number.'-';
 		$base_name = 'widget-'.$this->id_base.'['.$this->number.']';
 		
-		$options = array (array('none', __('Under image', 'a5-recent-posts')), array('right', __('Left of image', 'a5-recent-posts')), array('left', __('Right of image', 'a5-recent-posts')), array('notext', __('Don&#39;t show excerpt', 'a5-recent-posts')));
+		$options = array (array('none', __('Under image', 'custom-login-page')), array('right', __('Left of image', 'custom-login-page')), array('left', __('Right of image', 'custom-login-page')), array('notext', __('Don&#39;t show excerpt', 'custom-login-page')));
 		
-		a5_select($base_id.'alignment', $base_name.'[alignment]', $options, $instance['alignment'], __('Choose, whether or not to display the excerpt and whether it comes under the thumbnail or next to it.', 'a5-recent-posts'), false, array('space' => true));	
+		a5_select($base_id.'alignment', $base_name.'[alignment]', $options, $instance['alignment'], __('Choose, whether or not to display the excerpt and whether it comes under the thumbnail or next to it.', 'custom-login-page'), false, array('space' => true));	
 		
 	}
 	
@@ -101,7 +101,7 @@ class A5_Widget extends WP_Widget {
 		$base_name = 'widget-'.$this->id_base.'['.$this->number.']';
 		
 		$headings = array(array('1', 'h1'), array('2', 'h2'), array('3', 'h3'), array('4', 'h4'), array('5', 'h5'), array('6', 'h6'));
-		a5_select($base_id.'h', $base_name.'[h]', $headings, $instance['h'], __('Weight of the Post Title:', 'a5-recent-posts'), false, array('space' => true));
+		a5_select($base_id.'h', $base_name.'[h]', $headings, $instance['h'], __('Weight of the Post Title:', 'custom-login-page'), false, array('space' => true));
 		
 	}
 	
@@ -110,9 +110,9 @@ class A5_Widget extends WP_Widget {
 		$base_id = 'widget-'.$this->id_base.'-'.$this->number.'-';
 		$base_name = 'widget-'.$this->id_base.'['.$this->number.']';
 		
-		a5_checkbox($base_id.'readmore', $base_name.'[readmore]', $instance['readmore'], __('Check to have an additional &#39;read more&#39; link at the end of the excerpt.', 'a5-recent-posts'), array('space' => true));	
-		a5_text_field($base_id.'rmtext', $base_name.'[rmtext]', $instance['rmtext'], sprintf(__('Write here some text for the &#39;read more&#39; link. By default, it is %s:', 'a5-recent-posts'), '[&#8230;]'), array('space' => true, 'class' => 'widefat'));
-		a5_text_field($base_id.'rmclass', $base_name.'[rmclass]', $instance['rmclass'], __('If you want to style the &#39;read more&#39; link, you can enter a class here.', 'a5-recent-posts'), array('space' => true, 'class' => 'widefat'));
+		a5_checkbox($base_id.'readmore', $base_name.'[readmore]', $instance['readmore'], __('Check to have an additional &#39;read more&#39; link at the end of the excerpt.', 'custom-login-page'), array('space' => true));	
+		a5_text_field($base_id.'rmtext', $base_name.'[rmtext]', $instance['rmtext'], sprintf(__('Write here some text for the &#39;read more&#39; link. By default, it is %s:', 'custom-login-page'), '[&#8230;]'), array('space' => true, 'class' => 'widefat'));
+		a5_text_field($base_id.'rmclass', $base_name.'[rmclass]', $instance['rmclass'], __('If you want to style the &#39;read more&#39; link, you can enter a class here.', 'custom-login-page'), array('space' => true, 'class' => 'widefat'));
 		
 	}
 	

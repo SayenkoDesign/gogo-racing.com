@@ -5,7 +5,7 @@
  * Class A5 Option Page
  *
  * @ A5 Plugin Framework
- * Version: 1.0 beta 20150828
+ * Version: 1.0 beta 20150909
  *
  * Gets all sort of containers for the flexible A5 settings pages
  *
@@ -352,8 +352,6 @@ class A5_OptionPage {
 		$postbox = self::open_postbox($label, 'debug-info', true);
 		
 		$postbox .= self::tag_it(a5_get_version(), 'p');
-		
-		$pimmel = $options;
 		
 		ob_start();
 		

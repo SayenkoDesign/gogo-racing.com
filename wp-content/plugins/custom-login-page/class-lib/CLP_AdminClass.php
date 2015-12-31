@@ -181,6 +181,10 @@ class CLP_Admin extends A5_OptionPage {
 		
 		add_settings_field('clp_error_custom_message', __('Error Message', 'custom-login-page'), array($this, 'error_custom_message_input'), 'clp_message', 'clp_options');
 		
+		add_settings_field('clp_register_custom_message', __('Registration Message', 'custom-login-page'), array($this, 'register_custom_message_input'), 'clp_message', 'clp_options');
+		
+		add_settings_field('clp_password_custom_message', __('Lost Password Message', 'custom-login-page'), array($this, 'password_custom_message_input'), 'clp_message', 'clp_options');
+		
 		add_settings_section('clp_options', __('Export Settings', 'custom-login-page'), array($this, 'clp_export_section'), 'clp_export');
 		
 		add_settings_field('clp_export', __('Download a file with your settings', 'custom-login-page'), array($this, 'export_input'), 'clp_export', 'clp_options');
@@ -535,6 +539,18 @@ class CLP_Admin extends A5_OptionPage {
 	function error_custom_message_input() {
 		
 		a5_text_field('error_custom_message', 'clp_options[error_custom_message]', @self::$options['error_custom_message'], false, array('style' => 'min-width: 350px; max-width: 500px;'));
+		
+	}
+	
+	function password_custom_message_input() {
+		
+		a5_text_field('password_custom_message', 'clp_options[password_custom_message]', @self::$options['password_custom_message'], false, array('style' => 'min-width: 350px; max-width: 500px;'));
+		
+	}
+	
+	function register_custom_message_input() {
+		
+		a5_text_field('register_custom_message', 'clp_options[register_custom_message]', @self::$options['register_custom_message'], false, array('style' => 'min-width: 350px; max-width: 500px;'));
 		
 	}
 	
@@ -2028,6 +2044,8 @@ class CLP_Admin extends A5_OptionPage {
 				
 					self::$options['logout_custom_message'] = trim($input['logout_custom_message']);
 					self::$options['error_custom_message'] = trim($input['error_custom_message']);
+					self::$options['password_custom_message'] = trim($input['password_custom_message']);
+					self::$options['register_custom_message'] = trim($input['register_custom_message']);
 					
 					break;
 					

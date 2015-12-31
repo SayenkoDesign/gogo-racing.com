@@ -27,6 +27,12 @@ class clp_ShortcodeAdmin extends A5_OptionPage {
 				
 			self::$options = get_site_option('clp_shortcode_options');
 			
+			$widget_options = get_site_option('clp_widget_options');
+			
+			self::$options['_login_form_top'] = @$widget_options['login_form_top'];
+			self::$options['_login_form'] = @$widget_options['login_form'];
+			self::$options['_login_form_bottom'] = @$widget_options['login_form_bottom'];
+			
 			// in case the CLP export file was posted here.
 		
 			if (@array_key_exists('clp_options', self::$options)) :
@@ -43,11 +49,15 @@ class clp_ShortcodeAdmin extends A5_OptionPage {
 		
 			self::$options = get_option('clp_shortcode_options');
 			
+			$widget_options = get_site_option('clp_widget_options');
+			
+			self::$options['_login_form_top'] = @$widget_options['login_form_top'];
+			self::$options['_login_form'] = @$widget_options['login_form'];
+			self::$options['_login_form_bottom'] = @$widget_options['login_form_bottom'];
+			
 			// in case the CLP export file was posted here.
 		
 			if (@array_key_exists('clp_options', self::$options)) :
-			
-				self::$options['clp_options']['version'] = A5_CustomLoginPage::version;
 			
 				update_option('clp_options', self::$options['clp_options']);
 				
@@ -505,14 +515,14 @@ class clp_ShortcodeAdmin extends A5_OptionPage {
 	
 	function clp_shortcode_export_section() {
 		
-		self::tag_it(__('Export the current A5 Custom Login Widget settings and download them as a text file. The content of this text file can be imported into this or another A5 Custom Login Widget installation:', 'custom-login-page'), 'p', 1, false, true);
+		self::tag_it(__('Export the current A5 Custom Login Shortcode settings and download them as a text file. The content of this text file can be imported into this or another A5 Custom Login Shortcode installation:', 'custom-login-page'), 'p', 1, false, true);
 		self::tag_it(sprintf(_x('The file will be named %s. After you downloaded it, you can (but don&#39;t need to) rename the file to something more meaningful.', '%s is the file name', 'custom-login-page'), '<code>a5-clp-shortcode-' . str_replace('.','-', $_SERVER['SERVER_NAME']) . '-' . date('y') . date('m') . date('d') . '.txt</code>'), 'p', 1, false, true);
 		
 	}
 	
 	function export_input() {
 	
-		echo '<a class="button" href="' . get_bloginfo('url') . '/?clpfile=export-shortcode" id="widget-settings-download"><strong>'. __('Export &amp; Download', 'custom-login-page') .'</strong> A5 Custom Login Widget Settings File</a>';
+		echo '<a class="button" href="' . get_bloginfo('url') . '/?clpfile=export-shortcode" id="widget-settings-download"><strong>'. __('Export &amp; Download', 'custom-login-page') .'</strong> A5 Custom Login Shortcode Settings File</a>';
 	
 	}
 	
@@ -538,11 +548,11 @@ class clp_ShortcodeAdmin extends A5_OptionPage {
 	
 	function clp_shortcode_container_section() {
 		
-		self::tag_it(__('You can enter the url of the background picture, that you want to have on the widget container. Just upload any picture via the uploader on the Media section and copy the url of that file here. Leave it empty, if you don&#39;t want a picture. Background images are tiled by default. You can select the direction of repeating the image or to not repeat it. The position of the image can be something like &#39;100px 50%&#39; or &#39;center top&#39;.', 'custom-login-page'), 'p', 1, false, true);
-		self::tag_it(__('In the next section, you choose the background colour and the colour of the text in the widget. If you give two background colours, you can create a gradient. Colour no. 1 will always be up.', 'custom-login-page'), 'p', 1, false, true);
+		self::tag_it(__('You can enter the url of the background picture, that you want to have on the shortcode container. Just upload any picture via the uploader on the Media section and copy the url of that file here. Leave it empty, if you don&#39;t want a picture. Background images are tiled by default. You can select the direction of repeating the image or to not repeat it. The position of the image can be something like &#39;100px 50%&#39; or &#39;center top&#39;.', 'custom-login-page'), 'p', 1, false, true);
+		self::tag_it(__('In the next section, you choose the background colour and the colour of the text in the shortcode container. If you give two background colours, you can create a gradient. Colour no. 1 will always be up.', 'custom-login-page'), 'p', 1, false, true);
 		self::tag_it(__('Choose a border, if wanting one. Define style, width and whether or not, you want to have rounded corners (is not supported by all browsers).', 'custom-login-page'), 'p', 1, false, true);
 		self::tag_it(__('At last, give the container a shadow (is not supported by all browsers).', 'custom-login-page'), 'p', 1, false, true);
-		self::tag_it(__('You can leave any of the fields empty to keep the default widget of your theme.', 'custom-login-page'), 'p', 1, false, true);
+		self::tag_it(__('You can leave any of the fields empty to keep the default styling of your theme.', 'custom-login-page'), 'p', 1, false, true);
 		
 	}
 	
@@ -664,7 +674,7 @@ class clp_ShortcodeAdmin extends A5_OptionPage {
 	
 	function clp_shortcode_container_pos_section() {
 		
-		self::tag_it(__('Depending on what you do to the widget itself, you might want to change it&#39;s padding and margin as well.', 'custom-login-page'), 'p', 1, false, true);
+		self::tag_it(__('Depending on what you do to the container itself, you might want to change it&#39;s padding and margin as well.', 'custom-login-page'), 'p', 1, false, true);
 		self::tag_it(__('The Padding and Margin are given as css value. I.e. &#39;144px 0 0&#39;.', 'custom-login-page'), 'p', 1, false, true);
 		
 	}
@@ -685,7 +695,7 @@ class clp_ShortcodeAdmin extends A5_OptionPage {
 	
 	function clp_shortcode_logo_section() {
 		
-		self::tag_it(__('You can enter the url of the logo, that you want to have in the widget. Just upload any picture (best is a png or gif with transparent background) via the uploader on the Media section and copy the url of that file here.', 'custom-login-page'), 'p', 1, false, true);
+		self::tag_it(__('You can enter the url of the logo, that you want to have above the login form. Just upload any picture (best is a png or gif with transparent background) via the uploader on the Media section and copy the url of that file here.', 'custom-login-page'), 'p', 1, false, true);
 		self::tag_it(__('In the URL field, you enter the URL to which the logo should link.', 'custom-login-page'), 'p', 1, false, true);
 		self::tag_it(__('You can leave the fields empty if you don&#39;t want a logo in the widget. Or just copy the settings from the login page, to have a down-sized version of the logo in the widget.', 'custom-login-page'), 'p', 1, false, true);
 		self::tag_it(__('You can as well copy the settings for the logo from the login page.', 'custom-login-page'), 'p', 1, false, true);
@@ -730,7 +740,7 @@ class clp_ShortcodeAdmin extends A5_OptionPage {
 	
 	function clp_shortcode_logo_size_section() {
 		
-		self::tag_it(__('Here you can can give the Logo in the widget a margin and a padding, if necessary.', 'custom-login-page'), 'p', 1, false, true);
+		self::tag_it(__('Here you can can give the Logo above the login form a margin and a padding, if necessary.', 'custom-login-page'), 'p', 1, false, true);
 		
 	}
 	
@@ -798,7 +808,7 @@ class clp_ShortcodeAdmin extends A5_OptionPage {
 		self::tag_it(__('Margin and Padding are given as css values.', 'custom-login-page'), 'p', 1, false, true);
 		self::tag_it(__('At last, give the form a shadow (is not supported by all browsers).', 'custom-login-page'), 'p', 1, false, true);
 		self::tag_it(__('You can leave any of the fields empty to keep the default settings of Wordpress.', 'custom-login-page'), 'p', 1, false, true);
-		self::tag_it(__('You can as well copy the settings for the login form from the login widget.', 'custom-login-page'), 'p', 1, false, true);
+		self::tag_it(__('You can as well copy the settings for the login form from the login page.', 'custom-login-page'), 'p', 1, false, true);
 		
 		submit_button(__('Copy Settings', 'custom-login-page'), 'secondary', 'clp_shortcode_options[copy_loginform]', true, array('id' => 'copy_loginform'));
 		
@@ -1537,7 +1547,7 @@ class clp_ShortcodeAdmin extends A5_OptionPage {
 				
 					if (isset($input['copy_logo'])) :
 
-						$settings = array('logo', 'url', 'title', 'h1_margin', 'h1_padding', 'h1_corner', 'h1_shadow_x', 'h1_shadow_y', 'h1_shadow_softness', 'h1_shadow_color');
+						$settings = array('logo', 'url', 'title', 'h1_margin', 'h1_padding', 'h1_corner', 'h1_shadow_x', 'h1_shadow_y', 'h1_shadow_softness', 'h1_shadow_color', 'h1_shadow_inset');
 
 						self::copy_settings($settings);
 					
@@ -1563,7 +1573,7 @@ class clp_ShortcodeAdmin extends A5_OptionPage {
 				
 					if (isset($input['copy_loginform'])) :
 
-						$settings = array('loginform_background', 'loginform_img_repeat', 'loginform_img_pos', 'loginform_bg_color1', 'loginform_bg_color2', 'loginform_text_color', 'loginform_transparency', 'loginform_border_style', 'loginform_border_width', 'loginform_border_color', 'loginform_border_round', 'loginform_margin', 'loginform_padding', 'loginform_shadow_x', 'loginform_shadow_y', 'loginform_shadow_softness', 'loginform_shadow_color');
+						$settings = array('loginform_background', 'loginform_img_repeat', 'loginform_img_pos', 'loginform_bg_color1', 'loginform_bg_color2', 'loginform_text_color', 'loginform_transparency', 'loginform_border_style', 'loginform_border_width', 'loginform_border_color', 'loginform_border_round', 'loginform_margin', 'loginform_padding', 'loginform_shadow_x', 'loginform_shadow_y', 'loginform_shadow_softness', 'loginform_shadow_color', 'loginform_shadow_inset');
 
 						self::copy_settings($settings);
 					
@@ -1713,7 +1723,7 @@ class clp_ShortcodeAdmin extends A5_OptionPage {
 	
 	/**
 	 *
-	 * Output widget for preview
+	 * Output shortcode for preview
 	 *
 	 */
 	private static function preview_shortcode() {
@@ -1723,6 +1733,8 @@ class clp_ShortcodeAdmin extends A5_OptionPage {
 		echo self::open_sortable('side_top');
 		
 		echo self::open_postbox(__('Preview'), 'preview-box');
+		
+		ob_start();
 		
 		echo '<div class="a5_custom_login_container" style="margin: 5px; padding: 20px;">'.$eol;
 		
@@ -1759,6 +1771,16 @@ class clp_ShortcodeAdmin extends A5_OptionPage {
 		wp_register('', '');
 		
 		echo '</div>'.$eol;
+		
+		$output = ob_get_contents();
+		
+		if (!empty(self::$options['_login_form_top'])) $output = str_replace(self::$options['_login_form_top'], self::$options['login_form_top'], $output);
+		if (!empty(self::$options['_login_form'])) $output = str_replace(self::$options['_login_form'], self::$options['login_form'], $output);
+		if (!empty(self::$options['_login_form_bottom'])) $output = str_replace(self::$options['_login_form_bottom'], self::$options['login_form_bottom'], $output);
+		
+		ob_end_clean();
+		
+		echo $output;
 		
 		echo self::close_postbox();
 		

@@ -5,7 +5,7 @@
  * Class A5 Dynamic Files
  *
  * @ A5 Plugin Framework
- * Version: 1.0 beta 20150828
+ * Version: 1.0 beta 20150909
  *
  * Handels styles or javascript in either dynamical files or inline
  * 
@@ -129,7 +129,9 @@ class A5_DynamicFiles {
 	
 	function wp_enqueue_css () {
 		
-		$A5_css_file=get_bloginfo('url').'/a5-framework-frontend.css';
+		$file = (false === get_option('rewrite_rules')) ? '?A5_file=wp_css' : '/a5-framework-frontend.css';
+		
+		$A5_css_file=get_bloginfo('url').$file;
 					
 		wp_register_style('A5-framework', $A5_css_file, false, A5_FormField::version, self::$media);
 		wp_enqueue_style('A5-framework');
@@ -140,7 +142,9 @@ class A5_DynamicFiles {
 		
 		$footer = ('footer' == self::$media) ? true : false;
 		
-		$A5_js_file=get_bloginfo('url').'/a5-framework-frontend.js';
+		$file = (false === get_option('rewrite_rules')) ? '?A5_file=wp_js' : '/a5-framework-frontend.js';
+		
+		$A5_js_file=get_bloginfo('url').$file;
 			
 		wp_register_script('A5-framework', $A5_js_file, false, A5_FormField::version, $footer);
 		wp_enqueue_script('A5-framework');
@@ -153,7 +157,9 @@ class A5_DynamicFiles {
 		
 		if (!in_array($hook, self::$hooks)) return;
 		
-		$A5_css_file=get_bloginfo('url').'/a5-framework-backend.css';
+		$file = (false === get_option('rewrite_rules')) ? '?A5_file=admin_css' : '/a5-framework-backend.css';
+		
+		$A5_css_file=get_bloginfo('url').$file;
 					
 		wp_register_style('A5-framework', $A5_css_file, false, A5_FormField::version, self::$media);
 		wp_enqueue_style('A5-framework');
@@ -165,8 +171,10 @@ class A5_DynamicFiles {
 		if (!in_array($hook, self::$hooks)) return;
 		
 		$footer = ('footer' == self::$media) ? true : false;
+		
+		$file = (false === get_option('rewrite_rules')) ? '?A5_file=admin_js' : '/a5-framework-backend.js';
 	
-		$A5_js_file=get_bloginfo('url').'/a5-framework-backend.js';
+		$A5_js_file=get_bloginfo('url').$file;
 			
 		wp_register_script('A5-framework', $A5_js_file, false, A5_FormField::version, $footer);
 		wp_enqueue_script('A5-framework');
@@ -177,7 +185,9 @@ class A5_DynamicFiles {
 	
 	function login_enqueue_css () {
 		
-		$A5_css_file=get_bloginfo('url').'/a5-framework-login.css';
+		$file = (false === get_option('rewrite_rules')) ? '?A5_file=login_css' : '/a5-framework-login.css';
+		
+		$A5_css_file=get_bloginfo('url').$file;
 			
 		wp_register_style('A5-framework', $A5_css_file, false, A5_FormField::version, self::$media);
 		wp_enqueue_style('A5-framework');
@@ -188,7 +198,9 @@ class A5_DynamicFiles {
 		
 		$footer = ('footer' == self::$media) ? true : false;
 		
-		$A5_js_file=get_bloginfo('url').'/a5-framework-login.js';
+		$file = (false === get_option('rewrite_rules')) ? '?A5_file=login_js' : '/a5-framework-login.js';
+		
+		$A5_css_file=get_bloginfo('url').$file;
 			
 		wp_register_script('A5-framework', $A5_js_file, false, A5_FormField::version, $footer);
 		wp_enqueue_script('A5-framework');
@@ -392,12 +404,13 @@ class A5_DynamicFiles {
 	 * @ param $media = 'all'
 	 * @ param $inline = false (whether or not to print styles inline)
 	 * @ param $priority = false (to move the styles up or down)
+	 * @ param $hooks = false (hooks for admin styles)
 	 *
 	 */
 	 
-	function a5_styles($place = 'wp', $media = 'all', $inline = false, $priority = false) {
+	function a5_styles($place = 'wp', $media = 'all', $inline = false, $priority = false, $hooks = false) {
 		
-		self::__construct($place, 'css', $media, false, $inline, $priority);
+		self::__construct($place, 'css', $media, $hooks, $inline, $priority);
 		
 	}
 	
@@ -409,14 +422,15 @@ class A5_DynamicFiles {
 	 * @ param $hooks = false (for wp admin scripts)
 	 * @ param $inline = false (whether or not to print scripts inline)
 	 * @ param $footer = false (whether or not to print scripts into the footer)
+	 * @ param $priority = false (to move the scripts up or down)
 	 *
 	 */
 	 
-	function a5_scripts($place = 'wp', $hooks = false, $inline = false, $footer = false) {
+	function a5_scripts($place = 'wp', $hooks = false, $inline = false, $footer = false, $priority = false) {
 		
 		if (true == $footer) $footer = 'footer';
 		
-		self::__construct($place, 'js', $footer, $hooks, $inline);
+		self::__construct($place, 'js', $footer, $hooks, $inline, $priority);
 		
 	}
 	
@@ -426,10 +440,8 @@ class A5_DynamicFiles {
  *
  * function to export settings
  *
- * @ param $place = 'wp' selects where to attach the file or print inline (wp, admin, login)
- * @ param $hooks = false (for wp admin scripts)
- * @ param $inline = false (whether or not to print scripts inline)
- * @ param $footer = false (whether or not to print scripts into the footer)
+ * @ param $settings = plugin options
+ * @ param $plugin_name = will be used to create the name of the downloaded file
  *
  */
  

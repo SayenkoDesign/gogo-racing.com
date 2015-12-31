@@ -78,7 +78,7 @@ function sns_configure_backup_db() {
 
     $sql = "
                     CREATE TABLE IF NOT EXISTS {$table_ftp} (
-                         `server` varchar(255) NOT NULL DEFAULT '',
+                         `server` varchar(100) NOT NULL DEFAULT '',
                          `username` varchar(255) NOT NULL DEFAULT '',
                          `password` varchar(255) NOT NULL DEFAULT '',
                          `port` varchar(255) NOT NULL DEFAULT '',
