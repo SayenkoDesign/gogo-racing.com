@@ -688,7 +688,7 @@ window.wp = window.wp || {};
 				};
 			} else {
 				// Normal tick
-				tick = this.$('div:nth-of-type(' + (index + 1) + ')');
+				tick = this.jQuery('div:nth-of-type(' + (index + 1) + ')');
 				offset = tick.allPositions();
 				_.extend( offset, {
 					left: offset.left + thisOffset.left - parentOffset.left,
@@ -787,7 +787,7 @@ window.wp = window.wp || {};
 		},
 
 		updateCompareTwoMode: function() {
-			this.$('.compare-two-revisions').prop( 'checked', this.model.get('compareTwoMode') );
+			this.jQuery('.compare-two-revisions').prop( 'checked', this.model.get('compareTwoMode') );
 		},
 
 		// Toggle the compare two mode feature when the compare two checkbox is checked.
@@ -979,7 +979,7 @@ window.wp = window.wp || {};
 
 		applySliderSettings: function() {
 			this.$el.slider( _.pick( this.model.toJSON(), 'value', 'values', 'range' ) );
-			var handles = this.$('a.ui-slider-handle');
+			var handles = this.jQuery('a.ui-slider-handle');
 
 			if ( this.model.get('compareTwoMode') ) {
 				// in RTL mode the 'left handle' is the second in the slider, 'right' is first

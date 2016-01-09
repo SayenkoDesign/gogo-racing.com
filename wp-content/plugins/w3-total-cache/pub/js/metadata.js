@@ -30,7 +30,7 @@
  * As a result, you can define the metadata type, use $(expr) to load the metadata into the elements
  * matched by expr, then redefine the metadata type and run another $(expr) for other elements.
  * 
- * @name $.metadata.setType
+ * @name jQuery.metadata.setType
  *
  * @example <p id="one" class="some_class {item_id: 1, item_label: 'Label'}">This is a p</p>
  * @before $.metadata.setType("class")

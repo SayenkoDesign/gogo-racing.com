@@ -112,7 +112,7 @@
       else if (obj.className == "atom")
         base = 1;
       else if (obj.className == "function") {
-        if (window.jQuery != null && (obj.string == '$' || obj.string == 'jQuery') &&
+        if (window.jQuery != null && (obj.string == 'jQuery' || obj.string == 'jQuery') &&
             (typeof window.jQuery == 'function'))
           base = window.jQuery();
         else if (window._ != null && (obj.string == '_') && (typeof window._ == 'function'))
