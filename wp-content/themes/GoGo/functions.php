@@ -39,6 +39,34 @@ add_action('init', function () {
     );
 });
 
+// remove slug from custom post type
+add_filter('post_type_link', function ($post_link, $post, $leavename) {
+	    if ('Races' != $post->post_type || 'publish' != $post->post_status) {
+	        return $post_link;
+	    }
+	    $post_link = str_replace('/' . $post->post_type . '/', '/', $post_link);
+	    return $post_link;
+});
+
+// tell wordpress the races post type are races
+// wordpress cant do it automaticaly since the slug was removed
+add_action('pre_get_posts', function ($query) {
+    // Only noop the main query
+    if ( ! $query->is_main_query() )
+        return;
+
+    // Only noop our very specific rewrite rule match
+    if ( 2 != count( $query->query ) || ! isset( $query->query['page'] ) ) {
+        return;
+    }
+
+    // 'name' will be set if post permalinks are just post_name, otherwise the page rule will match
+    if ( ! empty( $query->query['name'] ) ) {
+        $query->set( 'post_type', array( 'post', 'Races', 'page' ) );
+    }
+});
+
+
 // give admin access to new capabilities
 add_action('admin_init', function() {
     $role = get_role('administrator');
