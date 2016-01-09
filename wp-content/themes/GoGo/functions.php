@@ -95,9 +95,30 @@ HTML;
 });
 
 add_action('wp_enqueue_scripts', function(){
-    wp_enqueue_script('script-name', get_template_directory_uri() . '/scripts/go-accordion.js', array('jquery'));
+    // newer version of jquery
+    wp_deregister_script('jquery');
+    wp_register_script('jquery', '//ajax.googleapis.com/ajax/libs/jquery/2.0.2/jquery.min.js');
+    wp_enqueue_script('jquery');
+
+    // slick
+    wp_enqueue_script('slick_js', get_template_directory_uri() . '/scripts/slick/slick/slick.min.js', array('jquery'));
+    wp_register_style('slick', get_template_directory_uri() . '/scripts/slick/slick/slick.css', false, '1.0.0', 'all');
+    wp_register_style('slick', get_template_directory_uri() . '/scripts/slick/slick/slick-theme.css', false, '1.0.0', 'all');
+
+    // drop down
+    wp_enqueue_script('dropdown', get_template_directory_uri() . '/jquery.dropdown.js', array('jquery'));
+
+    // jcarousel
+    wp_enqueue_script('carousel', get_template_directory_uri() . '/jquery.jcarousel.min.js', array('jquery'));
+
+    // app
+    wp_enqueue_script('app', get_template_directory_uri() . '/scripts/app.js', array('jquery', 'slick_js', 'carousel'));
 });
 
+// slick slider
+add_shortcode('slick', function($atts, $content){
+    echo '<div class="slick">' . $content .  '</div>';
+});
 
 // Widgets
 if(function_exists('register_sidebar')) {

@@ -46,36 +46,12 @@ body{
 .rightimg{float:left; width:194px; height:auto;}                 
               
 </style>
-    
 <script type="text/javascript" src="<?php bloginfo('template_directory'); ?>/scripts/utils.js"></script>
 <link rel="stylesheet" href="<?php bloginfo('template_directory'); ?>/css/helper.css" type="text/css" media="screen" />
 <link rel="stylesheet" href="<?php bloginfo('template_directory'); ?>/css/dropdown.linear.columnar.css" type="text/css" media="screen" />
+<link rel="stylesheet" href="<?php bloginfo('template_directory'); ?>/scripts/slick/slick/slick.css" type="text/css" media="screen" />
+<link rel="stylesheet" href="<?php bloginfo('template_directory'); ?>/scripts/slick/slick/slick-theme.css" type="text/css" media="screen" />
 <link rel="stylesheet" href="<?php bloginfo('template_directory'); ?>/css/default.advanced.css" type="text/css" media="screen" />
-<script type="text/javascript" src="<?php bloginfo('template_directory'); ?>/jquery.js"></script>
-<script type="text/javascript" src="<?php bloginfo('template_directory'); ?>/jquery.dropdown.js"></script>
-
-
-<script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.2/jquery.min.js"></script>
-<script type="text/javascript">
-  $(document).ready(function () {
-
-      $(window).scroll(function () {
-          if ($(this).scrollTop() > 100) {
-              $('.scrollup').fadeIn();
-          } else {
-              $('.scrollup').fadeOut();
-          }
-      });
-
-      $('.scrollup').click(function () {
-          $("html, body").animate({
-              scrollTop: 0
-          }, 600);
-          return false;
-      });
-
-  });
-</script>
 
 
 
@@ -84,32 +60,7 @@ body{
 <![endif]--> 
 
 <?php wp_head(); ?>
-<script language="javascript" type="text/javascript" src="<?php bloginfo('template_directory'); ?>/jquery.jcarousel.min.js"></script>
 <link rel="stylesheet" href="<?php bloginfo('template_directory'); ?>/skin.css" type="text/css" media="screen" />
-<script type="text/javascript">
-
-jQuery(document).ready(function() {
-    jQuery('#mycarousel').jcarousel();
-});
-
-jQuery(document).ready(function() {
-    jQuery('#mycarousel1').jcarousel();
-});
-
-jQuery(document).ready(function() {
-    jQuery('#mycarousel2').jcarousel();
-});
-
-jQuery(document).ready(function() {
-    jQuery('#mycarousel3').jcarousel();
-});
-
-jQuery(document).ready(function() {
-    jQuery('#mycarousel4').jcarousel();
-});
-</script>
-
-
 
 <script>
   (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
@@ -357,36 +308,13 @@ body{
 .rightimg{float:left; width:194px; height:auto;}                 
               
 </style>
-    
+
 <script type="text/javascript" src="<?php bloginfo('template_directory'); ?>/scripts/utils.js"></script>
 <link rel="stylesheet" href="<?php bloginfo('template_directory'); ?>/css/helper.css" type="text/css" media="screen" />
 <link rel="stylesheet" href="<?php bloginfo('template_directory'); ?>/css/dropdown.linear.columnar.css" type="text/css" media="screen" />
+<link rel="stylesheet" href="<?php bloginfo('template_directory'); ?>/scripts/slick/slick/slick.css" type="text/css" media="screen" />
+<link rel="stylesheet" href="<?php bloginfo('template_directory'); ?>/scripts/slick/slick/slick-theme.css" type="text/css" media="screen" />
 <link rel="stylesheet" href="<?php bloginfo('template_directory'); ?>/css/default.advanced.css" type="text/css" media="screen" />
-<script type="text/javascript" src="<?php bloginfo('template_directory'); ?>/jquery.js"></script>
-<script type="text/javascript" src="<?php bloginfo('template_directory'); ?>/jquery.dropdown.js"></script>
-
-
-<script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.2/jquery.min.js"></script>
-<script type="text/javascript">
-  $(document).ready(function () {
-
-      $(window).scroll(function () {
-          if ($(this).scrollTop() > 100) {
-              $('.scrollup').fadeIn();
-          } else {
-              $('.scrollup').fadeOut();
-          }
-      });
-
-      $('.scrollup').click(function () {
-          $("html, body").animate({
-              scrollTop: 0
-          }, 600);
-          return false;
-      });
-
-  });
-</script>
 
 
 
@@ -395,30 +323,7 @@ body{
 <![endif]--> 
 
 <?php wp_head(); ?>
-<script language="javascript" type="text/javascript" src="<?php bloginfo('template_directory'); ?>/jquery.jcarousel.min.js"></script>
 <link rel="stylesheet" href="<?php bloginfo('template_directory'); ?>/skin.css" type="text/css" media="screen" />
-<script type="text/javascript">
-
-jQuery(document).ready(function() {
-    jQuery('#mycarousel').jcarousel();
-});
-
-jQuery(document).ready(function() {
-    jQuery('#mycarousel1').jcarousel();
-});
-
-jQuery(document).ready(function() {
-    jQuery('#mycarousel2').jcarousel();
-});
-
-jQuery(document).ready(function() {
-    jQuery('#mycarousel3').jcarousel();
-});
-
-jQuery(document).ready(function() {
-    jQuery('#mycarousel4').jcarousel();
-});
-</script>
 
 
 
