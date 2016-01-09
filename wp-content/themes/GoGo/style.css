@@ -1744,3 +1744,11 @@ hr {
     color: #4d4b4b;
     margin-bottom: 10px;
 }
+
+/* slider */
+.slick-slider {
+    margin-bottom: 60px !important;
+}
+.slick-prev::before, .slick-next::before {
+    color: #FABF5F !important;
+}
