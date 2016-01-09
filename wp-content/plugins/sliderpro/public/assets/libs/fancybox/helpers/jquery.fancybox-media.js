@@ -75,7 +75,7 @@
 			}
 
 			$.each(rez, function(key, value) {
-				url = url.replace( 'jQuery' + key, value || '' );
+				url = url.replace( '$' + key, value || '' );
 			});
 
 			if (params.length) {

@@ -59,7 +59,7 @@ add_action('pre_get_posts', function ($query) {
     if ( 2 != count( $query->query ) || ! isset( $query->query['page'] ) ) {
         return;
     }
-
+    
     // 'name' will be set if post permalinks are just post_name, otherwise the page rule will match
     if ( ! empty( $query->query['name'] ) ) {
         $query->set( 'post_type', array( 'post', 'Races', 'page' ) );
