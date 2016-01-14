@@ -1,14 +1,7 @@
-<?php
-    if(!current_user_can('read_race') && !is_user_logged_in()) {
-        wp_redirect(wp_login_url(get_the_permalink()));
-    }
-?>
 <?php the_post(); ?>
 <?php get_header(); ?>
 <?php get_sidebar(); ?>
     <div id="content" style="float:left;width:650px;padding: 0;text-align: left;margin: 0;padding: 0 0 10px 10px;">
-        <div id="main" style="width:650px;">
-            <?php if (current_user_can('read_race')) : ?>
                 <div class="breadcrumb">
                     <a href="<?php echo get_option('home'); ?>">Home</a> //
                     <a href="<?php echo get_the_permalink(); ?>"><?php the_title(); ?></a>
@@ -124,9 +117,6 @@ HTML;
                         ?>
                     </div>
                 </div>
-            <?php else : ?>
-                <h1>Access Denied</h1>
-            <?php endif; ?>
         </div>
     </div>
 <?php get_footer(); ?>
